@@ -1,0 +1,12 @@
+- Reward function is not made
+- Steps per second jank ???
+    - Movement per step is wrong (just yolo'd 0.2)
+- Hitboxes arent setup
+- Action space missing swing sword action
+- Health/Damage effect
+- Arena Dimensions arent right
+- Diagnol Walkspeed Penalty
+- Normalize Coordinates
+    - take max X,Y / max possible in X,Y game 
+- Fix Keyboard Control Mode
+- Figure out parralell env

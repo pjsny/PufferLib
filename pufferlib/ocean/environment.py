@@ -14,6 +14,7 @@ from .moba.moba import Moba
 from .nmmo3.nmmo3 import NMMO3
 from .go.go import Go
 from .rware.rware import Rware
+from .duelist.duelist import Duelist
 #from .rocket_lander import rocket_lander
 from .trash_pickup.trash_pickup import TrashPickupEnv
 
@@ -123,6 +124,12 @@ def make_multiagent(buf=None, **kwargs):
     env = pufferlib.postprocess.MultiagentEpisodeStats(env)
     return pufferlib.emulation.PettingZooPufferEnv(env=env, buf=buf)
 
+def make_duelist(buf=None, render_mode='ansi', keyboard_control=False, **kwargs):
+    from .duelist.duelist import Duelist
+    env = Duelist(render_mode=render_mode, keyboard_control=keyboard_control)
+    env = pufferlib.postprocess.MultiagentEpisodeStats(env)
+    return pufferlib.emulation.PettingZooPufferEnv(env=env, buf=buf)
+
 MAKE_FNS = {
     'breakout': Breakout,
     'pong': Pong,
@@ -154,6 +161,7 @@ MAKE_FNS = {
     'spaces': make_spaces,
     'performance': make_performance,
     'performance_empiric': make_performance_empiric,
+    'duelist': make_duelist,
 }
 
 # Alias puffer_ to all names

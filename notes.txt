@@ -2,3 +2,5 @@ python demo.py --env puffer_squared --mode evaluate --render-mode raylib --train
 
 
 python demo.py --env puffer_squared --mode evaluate --render-mode raylib --train.device cpu
+
+python demo.py --env duelist --mode eval --render-mode raylib --env.keyboard_control=True
