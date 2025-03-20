@@ -1,0 +1,4 @@
+python demo.py --env puffer_squared --mode evaluate --render-mode raylib --train.device cpu --eval-model-path experiments/puffer_squared-1f54c0de/model_000153.pt
+
+
+python demo.py --env puffer_squared --mode evaluate --render-mode raylib --train.device cpu

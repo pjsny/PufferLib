@@ -26,6 +26,10 @@ torch.set_float32_matmul_precision('high')
 #pyximport.install(setup_args={"include_dirs": np.get_include()})
 from c_gae import compute_gae
 
+from torch.serialization import add_safe_globals
+from pufferlib.cleanrl import RecurrentPolicy
+add_safe_globals([RecurrentPolicy])
+
 
 def create(config, vecenv, policy, optimizer=None, wandb=None):
     seed_everything(config.seed, config.torch_deterministic)
@@ -574,7 +578,7 @@ def rollout(env_creator, env_kwargs, policy_cls, rnn_cls, agent_creator, agent_k
     if model_path is None:
         agent = agent_creator(env, policy_cls, rnn_cls, agent_kwargs).to(device)
     else:
-        agent = torch.load(model_path, map_location=device)
+        agent = torch.load(model_path, map_location=device, weights_only=False)
 
     ob, info = env.reset()
     driver = env.driver_env
